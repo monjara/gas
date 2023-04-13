@@ -20,10 +20,10 @@ function ChangeFontStyleInCell() {
       .setText(cell.getValue())
 
     for (const run of cell.getRichTextValue().getRuns()) {
-      const start = run.getStartIndex()
-      const end = run.getEndIndex()
       const isBold = run.getTextStyle().isBold()
       if (isBold) {
+        const start = run.getStartIndex()
+        const end = run.getEndIndex()
         const newStyle = _makeForegroundRed()
         builder.setTextStyle(start, end, newStyle)
       }
@@ -34,7 +34,7 @@ function ChangeFontStyleInCell() {
   }
 
   function _makeForegroundRed() {
-    return newStyle = SpreadsheetApp.newTextStyle()
+    return SpreadsheetApp.newTextStyle()
       .setBold(true)
       .setForegroundColor('#ff0000')
       .build()
