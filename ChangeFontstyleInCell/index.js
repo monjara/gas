@@ -19,7 +19,11 @@ function ChangeFontStyleInCell() {
     const builder = SpreadsheetApp.newRichTextValue()
       .setText(cell.getValue())
 
-    for (const run of cell.getRichTextValue().getRuns()) {
+    const runs = cell.getRichTextValue()?.getRuns()
+    if (!runs) {
+      return
+    }
+    for (const run of runs) {
       const isBold = run.getTextStyle().isBold()
       if (isBold) {
         const start = run.getStartIndex()
